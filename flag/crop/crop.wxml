@@ -1,0 +1,17 @@
+<import src="./we-cropper.wxml" />
+
+<view class="cropper-wrapper flex">
+	<template is="we-cropper" data="{{...cropperOpt}}" />
+	<view class="cropper-buttons flex" style="color: {{cropperOpt.boundStyle.color}}">
+		<view class="upload" bindtap="uploadTap">
+			选择图片
+		</view>
+		<!-- getCropperImage -->
+		<view class="getCropperImage" bindtap="getCropperImage">
+			确认截取
+		</view>
+	</view>
+</view>
+
+<!--  -->
+<canvas class="canvas-hidden" style="{{areaStyle}}" canvas-id="cropRender"></canvas>

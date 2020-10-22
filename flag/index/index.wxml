@@ -1,0 +1,19 @@
+<canvas class="canvas-hidden" canvas-id="avatarCanvas"></canvas>
+<view class="container">
+	<button class="avatar-area" wx:if="{{avatarPath==''}}" open-type="getUserInfo" bindgetuserinfo="bindUserInfo">点击授权头像</button>
+	<view wx:else class="avatar-area">
+		<image src="{{renderPath!=''?renderPath:avatarPath}}"></image>
+		<icon class="clearAvatar" type="clear" color="black" bindtap="clearImg"></icon>
+	</view>
+
+	<button class="btnLink" bindtap="uploadPhoto">从相册选择头像</button>
+	<scroll-view class='flag-area' scroll-x="true" scroll-into-view="{{toViewFlag}}" scroll-with-animation="true">
+		<block wx:for="{{flagImgs}}" wx:key="index">
+			<image class="flag-item" src="{{item}}" data-url="{{item}}" id="flag-{{index}}" bindtap="chgFlag"></image>
+		</block>
+	</scroll-view>
+	<view class="btn-area">
+		<button class="btnSave" bindtap="saveAvatar" open-type="scope.writePhotosAlbum">保存到相册</button>
+		<button class="btnLink" open-type="share">分享小程序</button>
+	</view>
+</view>
